@@ -8,10 +8,10 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head>
+  </head>
 
 <body class="index-page">
 
@@ -40,7 +40,7 @@
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-      <img src="./assets/img/moi.jpg" alt="" class="img-fluid rounded-circle">
+      <img src="img/profile.jpg?v=1" alt="Mohamed Amine Oulahyane" class="img-fluid rounded-circle">
     </div>
 
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
@@ -50,8 +50,8 @@
     </a>
 
     <div class="social-links text-center">     
-      <a href="http://www.linkedin.com/in/mohamed-amine-oulahyane-7a0b14267" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/MedAmine770" class="Github"><i class="bi-github"></i></a>
+      <a href="http://www.linkedin.com/in/mohamed-amine-oulahyane-7a0b14267" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/MedAmine770" class="github" target="_blank"><i class="bi bi-github"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
@@ -59,6 +59,7 @@
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#research"><i class="bi bi-microscope navicon"></i> Research</a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
@@ -70,14 +71,35 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
-      <img style="height: 100%;" src="assets/img/bg.jpg" alt="Your Image Description" data-aos="fade-in" class="img-fluid" style="max-width:100%; height:auto; object-fit:cover;">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="50">
-        <h2>Mohamed Amine Oulahyane</h2>
-        <p>I'm a <span class="typed" data-typed-items="Machine Learning Engineer, Developer, software engineer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+      <div class="hero-background">
+        <img src="assets/img/bg.jpg" alt="Background" class="hero-bg-image">
+        <div class="hero-gradient-overlay"></div>
       </div>
 
+      <div class="container hero-content" data-aos="fade-up" data-aos-delay="50">
+        <div class="hero-text-wrapper">
+          <h2 class="hero-title">Mohamed Amine Oulahyane</h2>
+          <p class="hero-subtitle">I'm a <span class="typed" data-typed-items="Machine Learning Engineer, Full-Stack Developer, AI Enthusiast, Software Engineer">Computer Scientist</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+          <div class="hero-buttons" data-aos="fade-up" data-aos-delay="100">
+            <a href="#portfolio" class="btn btn-hero-primary">
+              <span>View My Work</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-hero-outline">
+              <span>Get In Touch</span>
+              <i class="bi bi-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll to explore</span>
+      </div>
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
@@ -86,7 +108,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <p>.</p>
+        <p>Passionate about creating innovative solutions at the intersection of AI and full-stack development</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -94,7 +116,7 @@
         <div class="row gy-4 justify-content-center align-items-center">
           <!-- Image Column -->
           <div class="col-lg-4 d-flex justify-content-center">
-            <img src="assets/img/moi.jpg" alt="Your Image Description" data-aos="fade-in" class="img-fluid" style="max-width: 100%; height: auto; object-fit: cover;">
+            <img src="img/profile.jpg?v=1" alt="Mohamed Amine Oulahyane" data-aos="fade-in" class="img-fluid" style="max-width: 100%; height: auto; object-fit: cover;">
           </div>
         
           <!-- Content Column -->
@@ -104,19 +126,6 @@
               I am a dedicated Computer Science student with a strong passion for neuroscience and a deep interest in artificial intelligence. Alongside my AI expertise, I have hands-on experience in full-stack development, enabling me to build and optimize robust applications from end to end. I thrive at the intersection of technology and the human mind, aiming to contribute to advancements in AI and neurotechnology. My goal is to bridge the gap between computational systems and cognitive science while developing innovative solutions that push the boundaries of both fields.
             </p>
         
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+909 372 2762</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Azusa, CA</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>oulahyanemohamedamine@gmail.com</span></li>
-                </ul>
-              </div>
-            </div>
         
             <p class="py-3">
               <!-- Optional additional text here -->
@@ -206,141 +215,59 @@
     <section id="resume" class="resume section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>
-          Resume
-          <a href="./assets/img/Mohamed Amine Oulahyane (Resume)-2.pdf" download="MohamedAmine.pdf" style="color:#050505;">
-            <i class="bi bi-download" style="color:#070707;"></i>
-          </a>
-        </h2>
-        <p>
-          Aspiring computer scientist with a strong focus on software development and artificial intelligence. 
-          Driven by a passion for technology and innovation, I am committed to leveraging my skills to create 
-          impactful solutions. Below is an overview of my educational background, project experience, and 
-          technical expertise.
-        </p>
+        <h2>Resume <a href="./assets/img/Mohamed Amine Oulahyane (Resume)-2.pdf" download="MohamedAmine.pdf" class="resume-download-link"><i class="bi bi-download"></i></a></h2>
       </div><!-- End Section Title -->
-    
-      <div class="container">
-        <div class="row">
-          <!-- Left Column (Summary and Education) -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
-            <div class="resume-item pb-0">
-              <h4>Mohamed Amine Oulahyane</h4>
-              <p>
-                <em>
-                  Aspiring and driven Computer Scientist with a focus on software development and artificial 
-                  intelligence. Passionate about creating innovative solutions and making a positive social 
-                  impact through technology.
-                </em>
-              </p>
-              <ul>
-                <li>Azusa, CA</li>
-                <li>(909) 372-2762</li>
-                <li>oulahyanemohamedamine@gmail.com</li>
-              </ul>
-            </div><!-- End Summary -->
-    
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Associate Degree in Computer Science</h4>
-              <h5>Feb 2023 – Present</h5>
-              <p><em>Citrus College, Azusa, CA</em></p>
-              <p>Currently pursuing an Associate Degree in Computer Science with a strong focus on software development and artificial intelligence. Expected transfer date: Fall 2025.</p>
-            </div><!-- End Education -->
-    
-            <h3 class="resume-title">Skills & Technologies</h3>
-            <div class="resume-item pb-0">
-              <ul>
-                <li>- C++, C#, Python, JavaScript, HTML, CSS</li>
-                <li>- Flask, Node.js, Bootstrap, Unreal Engine, Hugging Face, Langchain (LangSmith), LLaMA 3.1, ChatGPT</li>
-              </ul>
-            </div>
-            
-            <h3 class="resume-title">Project Experience(Full-Stack)</h3>
-    
-            <div class="resume-item">
-              <h4>FinAid: Personal Financial Assistant - AI-Powered Financial Management Platform</h4>
-              <h5>2024</h5>
-              <p><em>Python, Next.js, Django, & GPT Technology</em></p>
-              <ul>
-                <li><strong>Financial Data Analysis:</strong> Leveraged AI to analyze and categorize bank statements, providing users with real-time insights into their spending habits.</li>
-                <li><strong>Natural Language Processing (NLP):</strong> Integrated advanced NLP models to enable users to query their financial data and receive personalized advice.</li>
-                <li><strong>Responsive Web Design:</strong> Developed a user-friendly interface using Next.js, ensuring seamless experience across devices.</li>
-                <li><strong>AI-Driven Insights:</strong> Employed LLMs and GPT to generate actionable financial insights, helping users optimize their budgeting and saving strategies.</li>
-                <li><strong>Web Development:</strong> Engineered both frontend and backend systems with Next.js and Django, enhancing the platform's performance and scalability.</li>
-                <li><strong>User Experience Enhancement:</strong> Conducted extensive testing and user feedback sessions to refine the platform’s UX/UI, improving user engagement and satisfaction.</li>
-              </ul>
-            </div>
-            <!-- End Skills & Technologies -->
-          </div><!-- End Left Column -->
-    
-          <!-- Right Column (Project Experience) -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            
-    
-            <!-- End Project 1 -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200"></div>
-          <h3 class="resume-title">Project Experience(Machine Learning)</h3>
-
-            <div class="resume-item">
-              <h4>Pac-Man AI Video Game - Expertise in Deep Learning and Reinforcement Learning</h4>
-              <h5>Jan 2024</h5>
-              <p><em>Python & TensorFlow</em></p>
-              <ul>
-                <li><strong>CNNs & LSTMs:</strong> Used CNNs for visual processing and LSTMs for strategic decision-making, enhancing AI efficiency.</li>
-                <li><strong>A3C Algorithm:</strong> Implemented A3C in the Gymnasium environment for robust and parallel training of AI agents.</li>
-                <li><strong>Unity & TensorFlow Integration:</strong> Combined Unity for game development with TensorFlow for neural network operations.</li>
-                <li><strong>Performance Optimization:</strong> Conducted extensive training and hyperparameter tuning for optimal AI performance.</li>
-                <li><strong>AI Visualization:</strong> Created real-time visualizations of AI decisions to showcase strategy and engagement.</li>
-              </ul>
-            </div><!-- End Project 2 -->
-    
-            <div class="resume-item">
-              <h4>Autonomous Car Racing Simulation - Real-Time Stock Monitoring & Analysis</h4>
-              <h5>Jul 2024</h5>
-              <p><em>Python & TensorFlow</em></p>
-              <ul>
-                <li><strong>Convolutional Neural Networks (CNNs):</strong> Employed CNNs for real-time image processing and path recognition.</li>
-                <li><strong>Proximal Policy Optimization (PPO):</strong> Utilized PPO for training the AI to navigate complex racing tracks efficiently.</li>
-                <li><strong>Real-World Simulation:</strong> Conducted extensive simulations to test AI performance in various racing scenarios and optimize driving strategies.</li>
-                <li><strong>Team Collaboration:</strong> Worked with a team to refine the AI's decision-making capabilities and enhance adaptability to dynamic environments.</li>
-                <li><strong>Performance Optimization:</strong> Engaged in iterative testing and hyperparameter tuning to achieve optimal AI performance.</li>
-              </ul>
-            </div><!-- End Project 3 -->
-    
-            <!-- Mountain Car Project -->
-            <div class="resume-item">
-              <h4>Mountain Car Simulation - Reinforcement Learning for Continuous Control</h4>
-              <h5>2024</h5>
-              <p><em>Python & Gymnasium</em></p>
-              <ul>
-                <li><strong>Deep Q-Network (DQN):</strong> Implemented DQN to teach the AI how to navigate the Mountain Car environment by overcoming gravity-based challenges with optimal policy exploration.</li>
-                <li><strong>Hyperparameter Tuning:</strong> Adjusted learning rate and discount factor to achieve stable learning and efficient performance.</li>
-                <li><strong>Exploration vs. Exploitation:</strong> Experimented with different ε-greedy strategies to balance the AI’s exploration of new actions and exploitation of known rewards.</li>
-                <li><strong>Performance Metrics:</strong> Tracked total reward per episode and monitored the car's performance over time to ensure training improvements and efficient learning.</li>
-              </ul>
-            </div><!-- End Mountain Car Project -->
-    
-            <!-- Blackjack Project -->
-            <div class="resume-item">
-              <h4>Blackjack AI - Reinforcement Learning in a Card-Based Environment</h4>
-              <h5>2024</h5>
-              <p><em>Python & Gymnasium</em></p>
-              <ul>
-                <li><strong>Q-Learning Algorithm:</strong> Trained an AI agent using Q-learning to make optimal decisions in a simplified blackjack game environment.</li>
-                <li><strong>Reward Maximization:</strong> Focused on maximizing the cumulative reward by optimizing decisions based on the current state and future expectations.</li>
-                <li><strong>State Space Exploration:</strong> Explored various states of the game (cards dealt, dealer's cards) to enable the AI to make accurate, data-driven decisions.</li>
-                <li><strong>Policy Improvement:</strong> Continuously improved the policy through iterative updates, refining the AI’s decision-making ability with each game episode.</li>
-              </ul>
-            </div><!-- End Blackjack Project -->
-    
-          </div><!-- End Right Column -->
-        </div><!-- End Row -->
-      </div><!-- End Container -->
     </section>
     <!-- /Resume Section -->
+
+    <!-- Research Experience Section -->
+    <section id="research" class="portfolio section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Research Experience</h2>
+        <p>Exploring cutting-edge research in autonomous systems and robotics</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <!-- 3D Carousel Container -->
+        <div class="carousel-3d-wrapper">
+          <div class="carousel-3d-container" id="researchCarousel3D">
+            <!-- Research Slides -->
+            <div class="carousel-slide" data-index="0">
+              <div class="slide-content">
+                <img src="img/basic_sim_f1tenth.gif" alt="F1Tenth Autonomous Racing">
+                <div class="slide-overlay">
+                  <h3>F1Tenth Autonomous Racing</h3>
+                  <p>Autonomous Vehicle Navigation & Mapping Research</p>
+                  <div class="slide-actions">
+                    <a href="img/basic_sim_f1tenth.gif" class="glightbox" data-gallery="research-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://github.com/MedAmine770" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <button class="carousel-nav carousel-prev" id="researchCarouselPrevBtn" aria-label="Previous research" type="button">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="carousel-nav carousel-next" id="researchCarouselNextBtn" aria-label="Next research" type="button">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /Research Experience Section -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section light-background">
@@ -352,117 +279,156 @@
       </div><!-- End Section Title -->
 
       <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/finaidpic.jpg" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>FinAid</h4>
+        <!-- 3D Carousel Container -->
+        <div class="carousel-3d-wrapper">
+          <div class="carousel-3d-container" id="carousel3D">
+            <!-- Project Slides -->
+            <div class="carousel-slide" data-index="0">
+              <div class="slide-content">
+                <img src="assets/img/finaidpic.jpg" alt="FinAid Project">
+                <div class="slide-overlay">
+                  <h3>FinAid</h3>
                   <p>AI-Powered Financial Management Platform</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="FinAid" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                    <i class="bi bi-zoom-in"></i>
-                  </a>
-                  <a href="https://finaid-sepia.vercel.app/" title="More Details" class="details-link">
-                    <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-              </div>
-            </div><!-- End FinAid Project -->
-            
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/pacman.gif" class="img-fluid" alt="Pacman AI Project">
-                <div class="portfolio-info">
-                  <h4>Pacman AI</h4>
-                  <p>AI-Driven Pacman Game</p>
-                  <a href="assets/img/portfolio/pacman-ai.jpg" title="Pacman AI" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                    <i class="bi bi-zoom-in"></i>
-                  </a>
-                  <a href="https://github.com/MedAmine770/Pacman-AI" title="More Details" class="details-link">
-                    <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-              </div>
-            </div><!-- End Pacman AI Project -->
-            
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/car_racing.gif" class="img-fluid" alt="Racing Car AI Project">
-                <div class="portfolio-info">
-                  <h4>Racing Car AI</h4>
-                  <p>Self-Driving Racing Car Simulation</p>
-                  <a href="assets/img/portfolio/racing-car-ai.jpg" title="Racing Car AI" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                    <i class="bi bi-zoom-in"></i>
-                  </a>
-                  <a href="https://github.com/MedAmine770/Racing-Car-AI" title="More Details" class="details-link">
-                    <i class="bi bi-link-45deg"></i>
-                  </a>
-                </div>
-              </div>
-            </div><!-- End Racing Car AI Project -->
-            
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/rocket.gif" class="img-fluid" alt="Rocket in Space AI Project">
-                <div class="portfolio-info">
-                  <h4>Rocket in Space AI</h4>
-                  <p>AI-Controlled Rocket Simulation in Space</p>
-                  <a href="assets/img/portfolio/rocket-space-ai.jpg" title="Rocket in Space AI" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
-                    <i class="bi bi-zoom-in"></i>
-                  </a>
-                  <a href="portfolio-details-rocket-space.html" title="More Details" class="details-link">
-                    <i class="bi bi-link-45deg"></i>
-                  </a>
+                  <div class="slide-actions">
+                    <a href="assets/img/finaidpic.jpg" class="glightbox" data-gallery="portfolio-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://finaid-sepia.vercel.app/" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
 
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="assets/img/blackjack.gif" class="img-fluid" alt="Rocket in Space AI Project">
-                  <div class="portfolio-info">
-                    <h4>BlackJack AI</h4>
-                    <p>AI-Controlled card game/p>
-                    <a href="assets/img/portfolio/blackjack.gif" title="BlackJack AI" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+            <div class="carousel-slide" data-index="1">
+              <div class="slide-content">
+                <img src="assets/img/pacman.gif" alt="Pacman AI Project">
+                <div class="slide-overlay">
+                  <h3>Pacman AI</h3>
+                  <p>AI-Driven Pacman Game</p>
+                  <div class="slide-actions">
+                    <a href="assets/img/pacman.gif" class="glightbox" data-gallery="portfolio-gallery">
                       <i class="bi bi-zoom-in"></i>
                     </a>
-                    <a href="portfolio-details-rocket-space.html" title="More Details" class="details-link">
+                    <a href="https://github.com/MedAmine770/Pacman-AI" target="_blank">
                       <i class="bi bi-link-45deg"></i>
                     </a>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="assets/img/mountain_car.gif" class="img-fluid" alt="Mountain car AI Project">
-                  <div class="portfolio-info">
-                    <h4>Mountain Car AI</h4>
-                    <p>AI-Controlled Car simulation in Mountain</p>
-                    <a href="assets/img/portfolio/mountain_car.gif" title="Mountain car AI" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+            <div class="carousel-slide" data-index="2">
+              <div class="slide-content">
+                <img src="assets/img/car_racing.gif" alt="Racing Car AI Project">
+                <div class="slide-overlay">
+                  <h3>Racing Car AI</h3>
+                  <p>Self-Driving Racing Car Simulation</p>
+                  <div class="slide-actions">
+                    <a href="assets/img/car_racing.gif" class="glightbox" data-gallery="portfolio-gallery">
                       <i class="bi bi-zoom-in"></i>
                     </a>
-                    <a href="portfolio-details-rocket-space.html" title="More Details" class="details-link">
+                    <a href="https://github.com/MedAmine770/Racing-Car-AI" target="_blank">
                       <i class="bi bi-link-45deg"></i>
                     </a>
                   </div>
                 </div>
-            </div><!-- End Rocket in Space AI Project -->
-            <!-- End Portfolio Item -->
+              </div>
+            </div>
 
-          </div><!-- End Portfolio Container -->
+            <div class="carousel-slide" data-index="3">
+              <div class="slide-content">
+                <img src="assets/img/rocket.gif" alt="Rocket in Space AI Project">
+                <div class="slide-overlay">
+                  <h3>Rocket in Space AI</h3>
+                  <p>AI-Controlled Rocket Simulation in Space</p>
+                  <div class="slide-actions">
+                    <a href="assets/img/rocket.gif" class="glightbox" data-gallery="portfolio-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://github.com/MedAmine770" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <div class="carousel-slide" data-index="4">
+              <div class="slide-content">
+                <img src="assets/img/blackjack.gif" alt="BlackJack AI Project">
+                <div class="slide-overlay">
+                  <h3>BlackJack AI</h3>
+                  <p>AI-Controlled card game</p>
+                  <div class="slide-actions">
+                    <a href="assets/img/blackjack.gif" class="glightbox" data-gallery="portfolio-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://github.com/MedAmine770" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="5">
+              <div class="slide-content">
+                <img src="assets/img/mountain_car.gif" alt="Mountain Car AI Project">
+                <div class="slide-overlay">
+                  <h3>Mountain Car AI</h3>
+                  <p>AI-Controlled Car simulation in Mountain</p>
+                  <div class="slide-actions">
+                    <a href="assets/img/mountain_car.gif" class="glightbox" data-gallery="portfolio-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://github.com/MedAmine770" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-slide" data-index="6">
+              <div class="slide-content">
+                <img src="img/ai-ide.jpg" alt="AI IDE Project">
+                <div class="slide-overlay">
+                  <h3>AI IDE</h3>
+                  <p>Intelligent Development Environment</p>
+                  <div class="slide-actions">
+                    <a href="img/ai-ide.jpg" class="glightbox" data-gallery="portfolio-gallery">
+                      <i class="bi bi-zoom-in"></i>
+                    </a>
+                    <a href="https://github.com/MedAmine770" target="_blank">
+                      <i class="bi bi-link-45deg"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <button class="carousel-nav carousel-prev" id="carouselPrevBtn" aria-label="Previous project" type="button">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="carousel-nav carousel-next" id="carouselNextBtn" aria-label="Next project" type="button">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
+            <span class="indicator" data-slide="4"></span>
+            <span class="indicator" data-slide="5"></span>
+            <span class="indicator" data-slide="6"></span>
+          </div>
         </div>
-
       </div>
 
 <!-- /Services Section -->
@@ -476,7 +442,8 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-              </div><!-- End Section Title -->
+        <p>Ready to collaborate? Let's discuss how we can work together to create something amazing.</p>
+      </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -485,49 +452,32 @@
           <div class="col-12">
 
             <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Azusa Ca</p>
+              <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-6 mb-4">
+                  <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-icon">
+                      <i class="bi bi-telephone"></i>
+                    </div>
+                    <div class="info-content">
+                      <h3>Call Me</h3>
+                      <p>+909 (372) 2762</p>
+                    </div>
+                  </div>
                 </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Me</h3>
-                  <p>+909 (372) 2762</p>
+                
+                <div class="col-lg-6 col-md-6 mb-4">
+                  <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                    <div class="info-icon">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                      <h3>Email Me</h3>
+                      <p>oulahyanemohamedamine@gmail.com</p>
+                    </div>
+                  </div>
                 </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Me</h3>
-                  <p>oulahyanemohamedamine@gmail.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="map-container" id="mapContainer" style="position: relative;">
-                <div class="map-overlay" id="mapOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0); cursor: pointer;"></div>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.8671670673653!2d-117.8876939!3d34.1333259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c327c84b48b1fd%3A0x7d8c0320e179f8f6!2sCitrus%20College!5e0!3m2!1sen!2sus!4v1696702741107!5m2!1sen!2sus" 
-                  frameborder="0" 
-                  style="border:0; width: 100%; height: 270px;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
               </div>
-              
-              <script>
-                // JavaScript to remove the overlay when the map is clicked
-                document.getElementById('mapOverlay').addEventListener('click', function() {
-                  document.getElementById('mapContainer').classList.add('clicked');
-                  this.style.display = 'none'; // Hide the overlay on click
-                });
-              </script>
+
               
                           </div>
           </div>

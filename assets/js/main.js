@@ -303,21 +303,24 @@
   });
 
   /**
-   * 3D Carousel Implementation - SIMPLE & DIRECT
+   * 3D Carousel Implementation
+   * Buttons use inline onclick - exposed on window for reliability
    */
   const carouselStates = new Map();
   
   function initCarousel3D(carouselId, prevBtnId, nextBtnId) {
     const carousel3D = document.getElementById(carouselId);
-    if (!carousel3D) {
-      return;
-    }
-    
+    if (!carousel3D) return;
+
+    // Prevent double-initialization on repeated tryInitCarousels calls
+    if (carouselStates.has(carouselId)) return;
+
     const wrapper = carousel3D.closest('.carousel-3d-wrapper');
+    const outer = carousel3D.closest('.carousel-outer') || wrapper;
     if (!wrapper) return;
     
     const slides = carousel3D.querySelectorAll('.carousel-slide');
-    const indicators = wrapper.querySelectorAll('.carousel-indicators .indicator');
+    const indicators = outer.querySelectorAll('.carousel-indicators .indicator');
     
     if (!slides.length) return;
     
@@ -347,11 +350,13 @@
       }, true);
       
       prevBtn.onclick = function(e) {
+        console.log('[Carousel] prev arrow click detected', carouselId);
         if (e) e.stopPropagation();
         const s = carouselStates.get(carouselId);
         if (!s || s.isAnimating) return;
         s.isAnimating = true;
         s.currentIndex = (s.currentIndex - 1 + s.slides.length) % s.slides.length;
+        console.log('[Carousel] prevSlide: index now', s.currentIndex);
         updateCarousel(carouselId);
         setTimeout(() => { s.isAnimating = false; }, 800);
       };
@@ -367,138 +372,26 @@
       }, true);
       
       nextBtn.onclick = function(e) {
+        console.log('[Carousel] next arrow click detected', carouselId);
         if (e) e.stopPropagation();
         const s = carouselStates.get(carouselId);
         if (!s || s.isAnimating) return;
         s.isAnimating = true;
         s.currentIndex = (s.currentIndex + 1) % s.slides.length;
+        console.log('[Carousel] nextSlide: index now', s.currentIndex);
         updateCarousel(carouselId);
         setTimeout(() => { s.isAnimating = false; }, 800);
       };
     }
     
-    // Set up swipe/drag handlers
+    // Set up swipe/drag handlers (only on the slide container)
     setupCarouselSwipe(carouselId);
-  }
-  
-  // Immediate setup using wrapper
-  function setupCarouselButtonsImmediate(wrapper, carouselId, prevBtnId, nextBtnId) {
-    // Find buttons within the wrapper
-    const prevBtn = wrapper.querySelector('#' + prevBtnId);
-    const nextBtn = wrapper.querySelector('#' + nextBtnId);
-    
-    if (prevBtn && nextBtn) {
-      console.log('Setting up buttons immediately for:', carouselId);
-      
-      prevBtn.onclick = function(e) {
-        console.log('PREV clicked (immediate):', carouselId);
-        if (e) e.preventDefault();
-        prevSlide(carouselId);
-        return false;
-      };
-      
-      nextBtn.onclick = function(e) {
-        console.log('NEXT clicked (immediate):', carouselId);
-        if (e) e.preventDefault();
-        nextSlide(carouselId);
-        return false;
-      };
-      
-      // Also use event delegation on wrapper as backup
-      wrapper.addEventListener('click', function(e) {
-        let btn = e.target.closest('button');
-        if (!btn) return;
-        
-        if (btn.id === prevBtnId) {
-          console.log('PREV via wrapper delegation:', carouselId);
-          e.preventDefault();
-          e.stopPropagation();
-          prevSlide(carouselId);
-        } else if (btn.id === nextBtnId) {
-          console.log('NEXT via wrapper delegation:', carouselId);
-          e.preventDefault();
-          e.stopPropagation();
-          nextSlide(carouselId);
-        }
-      }, true); // Use capture phase
-    } else {
-      console.warn('Buttons not found in wrapper for:', carouselId);
-    }
-  }
-  
-  function setupCarouselButtons(carouselId, prevBtnId, nextBtnId) {
-    // Wait a bit to ensure DOM is ready
-    setTimeout(() => {
-      const prevBtn = document.getElementById(prevBtnId);
-      const nextBtn = document.getElementById(nextBtnId);
-      
-      if (!prevBtn || !nextBtn) {
-        console.error('Buttons not found for:', carouselId, 'Retrying...');
-        setTimeout(() => setupCarouselButtons(carouselId, prevBtnId, nextBtnId), 200);
-        return;
-      }
-      
-      console.log('Setting up buttons for:', carouselId, {
-        prevBtnFound: !!prevBtn,
-        nextBtnFound: !!nextBtn
-      });
-      
-      // Create handler functions
-      const handlePrev = function(e) {
-        console.log('PREV button clicked:', carouselId);
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        }
-        prevSlide(carouselId);
-        return false;
-      };
-      
-      const handleNext = function(e) {
-        console.log('NEXT button clicked:', carouselId);
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        }
-        nextSlide(carouselId);
-        return false;
-      };
-      
-      // Remove any existing onclick attribute
-      prevBtn.removeAttribute('onclick');
-      nextBtn.removeAttribute('onclick');
-      
-      // Direct onclick assignment (most reliable)
-      prevBtn.onclick = handlePrev;
-      nextBtn.onclick = handleNext;
-      
-      // Also add event listeners as backup
-      prevBtn.addEventListener('click', handlePrev, false);
-      nextBtn.addEventListener('click', handleNext, false);
-      
-      // Ensure buttons are clickable
-      prevBtn.style.pointerEvents = 'auto';
-      nextBtn.style.pointerEvents = 'auto';
-      prevBtn.style.cursor = 'pointer';
-      nextBtn.style.cursor = 'pointer';
-      
-      // Prevent drag handlers from interfering
-      prevBtn.addEventListener('mousedown', function(e) {
-        e.stopPropagation();
-      }, true);
-      nextBtn.addEventListener('mousedown', function(e) {
-        e.stopPropagation();
-      }, true);
-      
-      console.log('Buttons setup complete for:', carouselId);
-    }, 200);
   }
   
   function updateCarousel(carouselId) {
     const state = carouselStates.get(carouselId);
-    if (!state || state.isAnimating || !state.slides) return;
+    if (!state || !state.slides) return;
+    console.log('[Carousel] updateCarousel running', carouselId, 'index=', state.currentIndex);
     
     const slides = state.slides;
     const currentIndex = state.currentIndex;
@@ -563,7 +456,9 @@
     }, 800);
   }
   
-  // Make functions globally accessible for main carousel (backward compatibility)
+  // Expose on window for INLINE onclick
+  window.__carouselPrev = prevSlide;
+  window.__carouselNext = nextSlide;
   window.carouselPrev = () => prevSlide('carousel3D');
   window.carouselNext = () => nextSlide('carousel3D');
   
@@ -571,45 +466,34 @@
   function setupCarouselSwipe(carouselId) {
     const carousel3D = document.getElementById(carouselId);
     if (!carousel3D) return;
-    
+
     const state = carouselStates.get(carouselId);
     if (!state) return;
-    
-    const wrapper = carousel3D.closest('.carousel-3d-wrapper');
-    if (!wrapper) return;
-    
+
+    const outer = carousel3D.closest('.carousel-outer') || carousel3D.closest('.carousel-3d-wrapper');
+    if (!outer) return;
+
     // Set up indicators
-    const indicators = wrapper.querySelectorAll('.carousel-indicators .indicator');
+    const indicators = outer.querySelectorAll('.carousel-indicators .indicator');
     indicators.forEach((indicator, index) => {
       indicator.addEventListener('click', () => goToSlide(carouselId, index));
     });
-    
-    // Set up drag/swipe handlers
+
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
     let startTime = 0;
-    
+
+    // Use the wrapper as the swipe start target — events from the active slide
+    // (pointer-events: all) bubble up through the wrapper to here.
+    const swipeTarget = outer.querySelector('.carousel-3d-wrapper') || outer;
+
     function handleStart(e) {
       const target = e.target;
-      // CRITICAL: Don't start dragging if clicking on buttons or links
-      const clickedButton = target.closest('button');
-      if (clickedButton && (
-          clickedButton.classList.contains('carousel-nav') ||
-          clickedButton.classList.contains('carousel-prev') ||
-          clickedButton.classList.contains('carousel-next') ||
-          clickedButton.id === 'carouselPrevBtn' ||
-          clickedButton.id === 'carouselNextBtn' ||
-          clickedButton.id === 'researchCarouselPrevBtn' ||
-          clickedButton.id === 'researchCarouselNextBtn'
-      )) {
-        console.log('Swipe handler: Ignoring button click');
-        return;
-      }
-      if (target.closest('.slide-actions a') || 
-          target.closest('.carousel-indicators') ||
+      // Ignore clicks on buttons, links, indicators
+      if (target.closest('button') ||
           target.closest('a') ||
-          target.tagName === 'BUTTON' ||
+          target.closest('.carousel-indicators') ||
           target.tagName === 'I') {
         return;
       }
@@ -617,55 +501,23 @@
       startTime = Date.now();
       startX = e.touches ? e.touches[0].clientX : e.clientX;
       currentX = startX;
-      carousel3D.style.cursor = 'grabbing';
-      carousel3D.style.userSelect = 'none';
     }
 
     function handleMove(e) {
       if (!isDragging) return;
-      e.preventDefault();
       currentX = e.touches ? e.touches[0].clientX : e.clientX;
-      
-      // Visual feedback during drag
-      const diff = currentX - startX;
-      if (Math.abs(diff) > 10) {
-        carousel3D.style.transform = `translateX(${diff * 0.1}px)`;
-      }
     }
 
-    function handleEnd(e) {
+    function handleEnd() {
       if (!isDragging) return;
-      const target = e.target;
-      
-      // CRITICAL: Don't trigger slide change if clicking on buttons or links
-      if (target && (target.closest('.carousel-nav') || 
-          target.closest('.carousel-prev') ||
-          target.closest('.carousel-next') ||
-          target.closest('.slide-actions a') || 
-          target.closest('.carousel-indicators') ||
-          target.closest('a') ||
-          target.closest('button') ||
-          target.tagName === 'BUTTON' ||
-          target.tagName === 'I')) {
-        isDragging = false;
-        carousel3D.style.cursor = '';
-        carousel3D.style.transform = '';
-        carousel3D.style.userSelect = '';
-        return;
-      }
-      
       isDragging = false;
-      carousel3D.style.cursor = '';
-      carousel3D.style.transform = '';
-      carousel3D.style.userSelect = '';
-      
+
       const diff = startX - currentX;
       const timeDiff = Date.now() - startTime;
-      const threshold = 50; // Minimum swipe distance
-      const speedThreshold = 0.3; // Minimum swipe speed (px/ms)
+      const threshold = 50;
+      const speedThreshold = 0.3;
       const speed = Math.abs(diff) / timeDiff;
-      
-      // Trigger slide change if swipe is significant enough
+
       if (Math.abs(diff) > threshold || (Math.abs(diff) > 30 && speed > speedThreshold)) {
         if (diff > 0) {
           nextSlide(carouselId);
@@ -674,39 +526,24 @@
         }
       }
     }
-    
-    // Touch events
-    carousel3D.addEventListener('touchstart', handleStart, { passive: false });
-    carousel3D.addEventListener('touchmove', handleMove, { passive: false });
-    carousel3D.addEventListener('touchend', handleEnd, { passive: false });
-    
-    // Mouse events
-    carousel3D.addEventListener('mousedown', handleStart);
-    carousel3D.addEventListener('mousemove', handleMove);
-    carousel3D.addEventListener('mouseup', handleEnd);
-    carousel3D.addEventListener('mouseleave', handleEnd);
+
+    // Touch: start on the wrapper area; move/end on document so the gesture
+    // isn't lost if the finger travels outside the element.
+    swipeTarget.addEventListener('touchstart', handleStart, { passive: true });
+    document.addEventListener('touchmove', handleMove, { passive: true });
+    document.addEventListener('touchend', handleEnd, { passive: true });
+
+    // Mouse: start on wrapper; move/end on document for reliable drag tracking
+    // even when the cursor leaves the carousel during a fast drag.
+    swipeTarget.addEventListener('mousedown', handleStart);
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleEnd);
   }
   
   // Initialize all carousels
   function initAllCarousels() {
-    // Main projects carousel
     initCarousel3D('carousel3D', 'carouselPrevBtn', 'carouselNextBtn');
-    
-    // Research carousel
     initCarousel3D('researchCarousel3D', 'researchCarouselPrevBtn', 'researchCarouselNextBtn');
-    
-    // ALSO set up buttons directly as backup - SIMPLE
-    setTimeout(function() {
-      const prev1 = document.getElementById('carouselPrevBtn');
-      const next1 = document.getElementById('carouselNextBtn');
-      if (prev1) prev1.onclick = function() { prevSlide('carousel3D'); };
-      if (next1) next1.onclick = function() { nextSlide('carousel3D'); };
-      
-      const prev2 = document.getElementById('researchCarouselPrevBtn');
-      const next2 = document.getElementById('researchCarouselNextBtn');
-      if (prev2) prev2.onclick = function() { prevSlide('researchCarousel3D'); };
-      if (next2) next2.onclick = function() { nextSlide('researchCarousel3D'); };
-    }, 500);
   }
   
   // Old code removed to prevent conflicts
@@ -737,47 +574,6 @@
   // Also try on window load as fallback
   window.addEventListener('load', function() {
     setTimeout(tryInitCarousels, 300);
-    
-    // FINAL FALLBACK: Set up buttons directly after page loads
-    setTimeout(function() {
-      console.log('FINAL FALLBACK: Setting up buttons');
-      
-      // Main carousel
-      const btn1 = document.getElementById('carouselPrevBtn');
-      const btn2 = document.getElementById('carouselNextBtn');
-      if (btn1) {
-        btn1.onclick = function(e) {
-          e.preventDefault();
-          prevSlide('carousel3D');
-        };
-        console.log('Button 1 set up');
-      }
-      if (btn2) {
-        btn2.onclick = function(e) {
-          e.preventDefault();
-          nextSlide('carousel3D');
-        };
-        console.log('Button 2 set up');
-      }
-      
-      // Research carousel
-      const btn3 = document.getElementById('researchCarouselPrevBtn');
-      const btn4 = document.getElementById('researchCarouselNextBtn');
-      if (btn3) {
-        btn3.onclick = function(e) {
-          e.preventDefault();
-          prevSlide('researchCarousel3D');
-        };
-        console.log('Button 3 set up');
-      }
-      if (btn4) {
-        btn4.onclick = function(e) {
-          e.preventDefault();
-          nextSlide('researchCarousel3D');
-        };
-        console.log('Button 4 set up');
-      }
-    }, 1000);
   });
 
 })();

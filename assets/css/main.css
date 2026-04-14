@@ -2029,6 +2029,22 @@ body {
   padding: 40px;
 }
 
+/* ── Carousel section overflow fix ──────────────────────── */
+/* Chrome clips 3D-transformed children when a parent has      */
+/* overflow:hidden + a child creates an isolated stacking       */
+/* context. Override the template's overflow:hidden on the     */
+/* two sections that contain carousels.                        */
+#research.section,
+#portfolio.section {
+  overflow: visible;
+}
+
+/* Confine the light background to the section itself so it    */
+/* doesn't bleed into adjacent sections when overflow:visible. */
+#portfolio.section {
+  background-clip: padding-box;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 992px) {
   .hero-title { font-size: 46px; }

@@ -89,6 +89,12 @@
   }
   window.addEventListener('load', aosInit);
 
+  // Register carousel init early so it fires on load
+  // regardless of whether later vendor calls succeed.
+  window.addEventListener('load', function() {
+    setTimeout(tryInitCarousels, 100);
+  });
+
   /**
    * Init typed.js
    */
@@ -108,13 +114,16 @@
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') {
+    new PureCounter();
+  }
 
   /**
    * Animate the skills items on reveal
    */
   let skillsAnimation = document.querySelectorAll('.skills-animation');
   skillsAnimation.forEach((item) => {
+    if (typeof Waypoint === 'undefined') return;
     new Waypoint({
       element: item,
       offset: '80%',
@@ -130,9 +139,9 @@
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({ selector: '.glightbox' });
+  }
 
   /**
    * Init isotope layout and filters

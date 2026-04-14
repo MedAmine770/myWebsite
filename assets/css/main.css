@@ -1910,8 +1910,8 @@ body {
 .hero-gradient-overlay {
   background: linear-gradient(
     135deg,
-    rgba(7, 15, 36, 0.82) 0%,
-    rgba(37, 99, 235, 0.22) 100%
+    rgba(10, 20, 50, 0.68) 0%,
+    rgba(37, 99, 235, 0.18) 100%
   );
 }
 
